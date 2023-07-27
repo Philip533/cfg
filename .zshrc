@@ -1,5 +1,5 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH="/home/philip/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 export TERM=xterm-256color
 # Loads the ZSH theme.
 ZSH_THEME="af-magic"
@@ -31,8 +31,8 @@ plugins=(
     git
     colored-man-pages
     zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-z
+    # zsh-syntax-highlighting
+#    zsh-z
     zsh-lsd
 )
 
@@ -43,8 +43,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH=$PATH:/home/philip/Documents/GPU_CASTEP/Utilities/scripts
-export PATH=$PATH:/home/philip/Documents/GPU_CASTEP/Utilities/optados/src
 export PATH=$PATH:/usr/local/diff-so-fancy
 function rebootwindows {
     WINDOWS_TITLE=`grep -i "^menuentry 'Windows" /boot/grub/grub.cfg|head -n 1|cut -d"'" -f2`
@@ -53,3 +51,5 @@ function rebootwindows {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=$PATH:/home/fil/.config/diff-so-fancy/diff-so-fancy
+source /home/fil/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

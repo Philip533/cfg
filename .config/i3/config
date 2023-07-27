@@ -1,5 +1,5 @@
 # Alt as super key 
-set $mod Mod1
+set $mod Mod4
 
 #Picom (Transparency)
 exec picom --config ~/.config/picom/picom.conf
@@ -24,7 +24,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id ~/.config/polybar/forest/launch_polybar.sh 
 
 #Wallpaper
-exec_always feh --randomize --bg-scale /usr/share/backgrounds/Tolkien/*
+exec_always --no-startup-id sleep 1 && feh --bg-scale --randomize /usr/share/endeavouros/backgrounds/*
 
 #Assign applications to workspaces
 assign [class="Terminator"] 1
@@ -53,7 +53,7 @@ bindsym $mod+End exec lightscreen
 bindsym $mod+ctrl+Return exec firefox 
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec "sh ~/.config/rofi/launchers/text/launcher.sh"
