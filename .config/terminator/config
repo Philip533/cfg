@@ -1,0 +1,69 @@
+[global_config]
+  focus = mouse
+  inactive_color_offset = 1.0
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+  suppress_multiple_term_dialog = True
+[keybindings]
+  go_up = <Super>Up
+  go_down = <Super>Down
+  go_left = <Super>Left
+  go_right = <Super>Right
+  broadcast_group = <Shift><Super>b
+  broadcast_all = <Primary><Super>b
+[profiles]
+  [[Aco]]
+    background_color = "#1f1305"
+    cursor_bg_color = "#bae2fb"
+    font = Noto Sans Mono 10
+    foreground_color = "#b4e1fd"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#3f3f3f:#ff0883:#83ff08:#ff8308:#0883ff:#8308ff:#08ff83:#bebebe:#474747:#ff1e8e:#8eff1e:#ff8e1e:#0883ff:#8e1eff:#1eff8e:#c4c4c4"
+    use_system_font = False
+  [[Aurora]]
+    background_color = "#0f1c21"
+    cursor_bg_color = "#00485a"
+    font = Noto Sans Mono 10
+    foreground_color = "#80b6ad"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#0f1c21:#046655:#04c975:#b5bd68:#308891:#94a5bc:#8abeb7:#80b6ad:#0f1c21:#046655:#04c975:#b5bd68:#308891:#94a5bc:#8abeb7:#80b6ad"
+    use_system_font = False
+  [[Blazer]]
+    background_color = "#0d1926"
+    cursor_bg_color = "#d9e6f2"
+    font = Noto Sans Mono 10
+    foreground_color = "#d9e6f2"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#000000:#b87a7a:#7ab87a:#b8b87a:#7a7ab8:#b87ab8:#7ab8b8:#d9d9d9:#262626:#dbbdbd:#bddbbd:#dbdbbd:#bdbddb:#dbbddb:#bddbdb:#ffffff"
+    use_system_font = False
+  [[default]]
+    background_color = "#171423"
+    cursor_bg_color = "#a288f7"
+    font = Noto Sans Mono 10
+    foreground_color = "#9f9fa1"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#2d283f:#ed2261:#1fa91b:#8ddc20:#487df4:#8d35c9:#3bdeed:#9e9ea0:#59516a:#f0729a:#53aa5e:#b2dc87:#a9bcec:#ad81c2:#9de3eb:#a288f7"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 15:49
+      maximised = False
+      fullscreen = False
+      size = 1256, 1372
+      title = pdj506@herbie:~/CrAs
+      last_active_term = 4ef9f184-75e2-4c43-b38d-26b5cbd87475
+      last_active_window = True
+    [[[terminal1]]]
+      type = Terminal
+      parent = child0
+      order = 0
+      profile = default
+      uuid = 4ef9f184-75e2-4c43-b38d-26b5cbd87475
+[plugins]
