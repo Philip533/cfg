@@ -168,6 +168,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #Open window in new workspace
-bindsym $mod+n exec --no-startup-id ~/autoworkspace.sh
-bindsym $mod+Shift+n exec --no-startup-id ~/autoworkspace.sh -m  # move container to new window
+bindsym $mod+n exec --no-startup-id ~/.config/i3/scripts/new-workspace.sh
+# bindsym $mod+Shift+n exec --no-startup-id ~/autoworkspace.sh -m  # move container to new window
 
