@@ -42,7 +42,7 @@ exec_always --no-startup-id sleep 1 && feh --bg-scale --randomize /usr/share/end
 
 #Assign applications to workspaces
 assign [class="Terminator"] 1
-assign [class="Steam"] 5
+assign [class="Slack"] 5
 assign [class="firefox"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="discord"] 4
