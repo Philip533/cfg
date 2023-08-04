@@ -28,7 +28,7 @@ exec_always feh --randomize --bg-scale /usr/share/backgrounds/Tolkien/*
 
 #Assign applications to workspaces
 assign [class="Terminator"] 1
-assign [class="Steam"] 5
+assign [class="Slack"] 5
 assign [class="firefox"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="discord"] 4
