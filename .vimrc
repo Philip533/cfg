@@ -41,6 +41,7 @@ augroup END
 
 "Basic settings (tabsize, clipboard,etc) {{{
 set number
+set hidden
 set hlsearch incsearch
 set relativenumber
 set tabstop=2
