@@ -51,6 +51,7 @@ for_window [class="libreoffice-impress"] move to workspace 6
 
 #Move between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
 
 #Gaps
 gaps inner 3
@@ -122,7 +123,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
+bindsym $mod+1 workspace number $ws1 
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
