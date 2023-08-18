@@ -49,6 +49,8 @@ assign [class="discord"] 4
 for_window [class="libreoffice"] move to workspace 6
 for_window [class="libreoffice-impress"] move to workspace 6
 for_window [class="gnuplot_qt" instance="gnuplot_qt"] floating enable
+for_window [class="org-openscience-jmol-app-jmolpanel-JmolPanel"] floating enable
+for_window [class="Thunar"] floating enable
 
 #Move between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
