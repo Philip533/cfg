@@ -56,6 +56,9 @@ for_window [class="Thunar"] floating enable
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 
+#Focused indicator as teal
+client.focused          #ffffff #285577 #ffffff #2e9ef4   #008080
+
 #Gaps
 gaps inner 3
 gaps outer 1
