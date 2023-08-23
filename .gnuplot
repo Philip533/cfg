@@ -43,7 +43,7 @@ set ylabel offset 0.5,0
 set xlabel offset 0,0.3
 
 # Makes a nice key with box around it
-set key opaque box lw 2 spacing 1.2 height 0.5
+set key opaque box lw 2 spacing 1.2 height 0.5 width 1
 
 # How much of the canvas to fill
 set size 0.98,0.98

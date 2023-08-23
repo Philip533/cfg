@@ -12,7 +12,6 @@ alias pacq='pacman -Q'
 alias pacu='sudo pacman -U'
 
 #Dotfiles automation
-alias dotfiles='/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=${HOME}'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 #Git aliases
@@ -42,14 +41,7 @@ source $ZSH/oh-my-zsh.sh
    [[ $- != *i* ]] && return 
 
 # User configuration
-export MANPATH="/usr/local/man:$MANPATH"
 export PATH=$PATH:/usr/local/diff-so-fancy
-function rebootwindows {
-    WINDOWS_TITLE=`grep -i "^menuentry 'Windows" /boot/grub/grub.cfg|head -n 1|cut -d"'" -f2`
-    sudo grub-set-default "$WINDOWS_TITLE"
-    sudo reboot
-}
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=$PATH:/home/fil/.config/diff-so-fancy/diff-so-fancy
 source /home/fil/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
