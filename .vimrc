@@ -233,7 +233,7 @@ set t_co=256
 "colorscheme solarized8
 
 "Highlights folds in black and white so it's actually readable
-hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=Black guibg=White
+hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#32371f
 hi Search cterm=NONE guifg=Black guibg=white
 
 "Gitgutter colours
