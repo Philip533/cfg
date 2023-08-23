@@ -24,6 +24,7 @@ floating_modifier $mod
 exec terminator
 exec spotify
 exec firefox
+exec thunderbird
 
 set $lock i3lock -i /usr/share/endeavouros/backgrounds/stormfather.jpg
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.config/i3/stormfather.png 
@@ -43,6 +44,7 @@ exec_always --no-startup-id sleep 1 && feh --bg-scale --randomize /usr/share/end
 #Assign applications to workspaces
 assign [class="Terminator"] 1
 assign [class="Slack"] 5
+assign [class="thunderbird"]6
 assign [class="firefox"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="discord"] 4
