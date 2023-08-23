@@ -12,9 +12,9 @@ floating_modifier $mod
 #Launch most used programs.
 exec discord
 exec terminator
-exec steam
 exec spotify
 exec firefox
+exec thunderbird
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -29,6 +29,7 @@ exec_always feh --randomize --bg-scale /usr/share/backgrounds/Tolkien/*
 #Assign applications to workspaces
 assign [class="Terminator"] 1
 assign [class="Slack"] 5
+assign [class="thunderbird"]6
 assign [class="firefox"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="discord"] 4
