@@ -4,6 +4,7 @@ set $mod Mod1
 #Picom (Transparency)
 exec picom --config ~/.config/picom/picom.conf
 
+exec xrandr --output DP-2 --rate 100 --mode 1920x1080
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
