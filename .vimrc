@@ -12,19 +12,16 @@ augroup END
 
 augroup filetype_fortran
      autocmd!
-     autocmd FileType fortran nnoremap <buffer> <localleader>c I!<esc>
      autocmd FileType fortran nnoremap <buffer> <F9> :w<CR>:execute '!gfortran' shellescape(@%,1)<CR> :execute '!./a.out'<CR>
 augroup END
 
 augroup filetype_python
      autocmd!
-     autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
      autocmd FileType python nnoremap <buffer> <F9> :w<CR>:execute '!python3' shellescape(@%, 1)<CR>
 augroup END
 
 augroup filetype_cpp
      autocmd!
-     autocmd FileType c nnoremap <buffer> <localleader>c I//<esc>
      autocmd FileType c nnoremap <buffer> <F9> :w<CR>:execute '!g++' shellescape(@%, 1)<CR> : execute '!./a.out. <CR>
 augroup END
 
@@ -41,18 +38,19 @@ augroup END
 
 "Basic settings (tabsize, clipboard,etc) {{{
 set number
+set nofixeol
 set hidden
 set hlsearch incsearch
 set relativenumber
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set expandtab
 set background=dark
 set clipboard=unnamedplus
 set encoding=utf-8
 set wildmenu
 set ttyfast
-syntax enable
 set updatetime=1000
 "}}}
 
@@ -91,7 +89,7 @@ inoremap <C-d> <esc> ddi
 
 "Uppercase  word in insert mode
 inoremap <C-u> <esc> viw U  
-inoremap <C-e> <esc> viw u
+inoremap <C-e> <esc> viw ui
 
 "Edit vimrc, zshrc
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
@@ -112,7 +110,7 @@ inoremap { {}<esc>i
 inoremap [ []<esc>i
 
 "Gfortran compilation
-nnoremap <leader>gf :!gfortran -Wall -fcheck=all -fmax-errors=1 -O3 -march=native -o 
+nnoremap <leader>gf :!gfortran -Wall -fcheck=all -fmax-errors=1 -O3 -march=native -std=f2008<CR>
 
 "Put word in speech marks
 inoremap <C-s> <esc>bi"<esc>ea"
@@ -131,6 +129,10 @@ nnoremap <C-f> :NERDTreeFind<CR>
 "Plugins installed using plugged {{{
 filetype plugin indent on
 call plug#begin('~/.vim/plugged')
+Plug 'luochen1990/rainbow'
+Plug 'Yggdroot/indentLine'
+Plug 'easymotion/vim-easymotion'
+Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
 Plug 'jeyemhex/vim-castep'
 Plug 'tpope/vim-surround'
@@ -145,6 +147,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 "}}}
 
@@ -152,7 +155,7 @@ call plug#end()
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 "}}}
 
 "Toggle fold column{{{
@@ -187,21 +190,21 @@ endfunction
 "}}}
 
 "Vimtex settings {{{
-"set conceallevel=1
-" let g:vimtex_syntax_conceal = {
-"           \ 'accents': 1,
-"           \ 'ligatures': 1,
-"           \ 'cites': 1,
-"           \ 'fancy': 1,
-"           \ 'greek': 1,
-"           \ 'math_bounds': 0,
-"           \ 'math_delimiters': 0,
-"           \ 'math_fracs': 1,
-"           \ 'math_super_sub': 1,
-"            \ 'math_symbols': 0,
-"           \ 'sections': 0,
-"           \ 'styles': 1,
-"           \}
+set conceallevel=1
+ let g:vimtex_syntax_conceal = {
+           \ 'accents': 1,
+            \ 'ligatures': 1,
+            \ 'cites': 1,
+            \ 'fancy': 1,
+            \ 'greek': 1,
+            \ 'math_bounds': 1,
+            \ 'math_delimiters': 0,
+            \ 'math_fracs': 1,
+            \ 'math_super_sub': 1,
+             \ 'math_symbols': 0,
+            \ 'sections': 1,
+            \ 'styles': 1,
+            \}
 "Sets vimtex default reader
 let g:vimtex_view_general_viewer = 'okular'
 let maplocalleader = "\\"
@@ -225,13 +228,35 @@ let g:airline#extensions#tagbar#flags = ''
 nmap <F8> :TagbarToggle<CR>
 "}}}
 
+"YouCompleteMe{{{
+"
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
+let g:ycm_show_diagnostics_ui = 0
+nnoremap <leader>[ :YcmCompleter GoToDefinition<CR>
+let g:ycm_filetype_blacklist = { 'tex': 1 }
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+"}}}
+
+"IndentLine{{{
+
+let g:indentLine_char = ''
+let g:indentLine_color_term = 11
+
+"}}}
+
 "Aesthetics {{{
 set termguicolors
 set t_co=256
+let g:rainbow_active = 1
 
 "Changed to solarised8
-"colorscheme solarized8
-
+syntax enable
+colorscheme solarized
 "Highlights folds in black and white so it's actually readable
 hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#32371f
 hi Search cterm=NONE guifg=Black guibg=white
@@ -251,6 +276,15 @@ highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=
 highlight CursorLineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=White guibg=NONE
 highlight SignColumn term=bold cterm=NONE ctermfg=White ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
+highlight YcmWarningLine guibg=#ffffff ctermbg=white guifg=#ffffff
+highlight YcmWarningSign guibg=#ffffff ctermbg=white guifg=#ffffff
+highlight YcmWarningSection guibg=#ffffff ctermbg=white guifg=#ffffff
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#171423 guibg=#ffffff
+highlight Pmenusel ctermfg=15 ctermbg=0 guifg=#800000 guibg=#ffffff
+
 "Toggles highlighting for search
 nnoremap <silent> _ :nohl<CR>
 "}}}
+hi clear Conceal
+
+let g:tagbar_ctags_bin = "/usr/local/bin/ctags"

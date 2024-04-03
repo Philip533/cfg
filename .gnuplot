@@ -37,6 +37,7 @@ set pointintervalbox 3
 # One minor tic between each main tic
 set mxtics 2
 set mytics 2
+set grid
 
 # Change the offset of the labels
 set ylabel offset 0.5,0
@@ -49,3 +50,5 @@ set key opaque box lw 2 spacing 1.2 height 0.5 width 1
 set size 0.98,0.98
 set size ratio 0.8
 
+# Helpful macros
+bigBlueDots = 'with linespoints lc "blue" pt 7 ps 4'
