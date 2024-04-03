@@ -7,7 +7,9 @@ ZSH_THEME="af-magic"
 
 # Package manager aliases
 alias aptup='sudo apt update; sudo apt upgrade'
-
+alias aptins='sudo apt install' 
+alias sls='sudo lsd -ltr'
+alias lst='lsd -ltr'
 #Dotfiles automation
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -24,6 +26,7 @@ bindkey '^R' history-beginning-search-backward
 # Plugins for syntax colouring and autocomplete.
 plugins=(
     fzf # History fuzzy finder
+    zsh-autosuggestions # Autocomplete
     git # Git history
     colored-man-pages # Nice man pages
     zsh-lsd # Better coloured LSD
