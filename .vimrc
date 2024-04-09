@@ -35,7 +35,6 @@ augroup filetype_bash
      autocmd FileType sh nnoremap <buffer> <localleader>c I#<esc>
 augroup END
 "}}}
-
 "Basic settings (tabsize, clipboard,etc) {{{
 set number
 set nofixeol
@@ -177,7 +176,7 @@ let g:quickfix_is_open = 0
 
 function! QuickfixToggle()
      if g:quickfix_is_open
-          cclose
+        cclose
           let g:quickfix_is_open = 0
           execute g:quickfix_return_to_window . "wincmd w"
      else
@@ -191,20 +190,20 @@ endfunction
 
 "Vimtex settings {{{
 set conceallevel=1
- let g:vimtex_syntax_conceal = {
-           \ 'accents': 1,
-            \ 'ligatures': 1,
-            \ 'cites': 1,
-            \ 'fancy': 1,
-            \ 'greek': 1,
-            \ 'math_bounds': 1,
-            \ 'math_delimiters': 0,
-            \ 'math_fracs': 1,
-            \ 'math_super_sub': 1,
-             \ 'math_symbols': 0,
-            \ 'sections': 1,
-            \ 'styles': 1,
-            \}
+  let g:vimtex_syntax_conceal = {
+    \ 'accents': 1,
+    \ 'ligatures': 1,
+    \ 'cites': 1,
+    \ 'fancy': 1,
+    \ 'greek': 1,
+    \ 'math_bounds': 1,
+    \ 'math_delimiters': 0,
+    \ 'math_fracs': 1,
+    \ 'math_super_sub': 1,
+    \ 'math_symbols': 0,
+    \ 'sections': 1,
+    \ 'styles': 1,
+    \}
 "Sets vimtex default reader
 let g:vimtex_view_general_viewer = 'okular'
 let maplocalleader = "\\"
@@ -243,9 +242,8 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 "}}}
 
 "IndentLine{{{
-
-let g:indentLine_char = ''
-let g:indentLine_color_term = 11
+let g:indentLine_char = '⸽'
+let g:indentLine_setColors = 0
 
 "}}}
 
@@ -262,9 +260,9 @@ hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#32371f
 hi Search cterm=NONE guifg=Black guibg=white
 
 "Gitgutter colours
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+highlight GitGutterAdd    guifg=#009900 guibg=#171423
+highlight GitGutterChange guifg=#bbbb00 guibg=#171423
+highlight GitGutterDelete guifg=#ff2222 guibg=#171423
 
 "Changes cursor type for insert mode
 let &t_SI = "\<Esc>[6 q"
@@ -285,6 +283,5 @@ highlight Pmenusel ctermfg=15 ctermbg=0 guifg=#800000 guibg=#ffffff
 "Toggles highlighting for search
 nnoremap <silent> _ :nohl<CR>
 "}}}
-hi clear Conceal
-
 let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
+hi clear Conceal

@@ -8,8 +8,11 @@ ZSH_THEME="af-magic"
 # Package manager aliases
 alias aptup='sudo apt update; sudo apt upgrade'
 alias aptins='sudo apt install' 
-alias sls='sudo lsd -ltr'
+
+# ls aliases
+alias sls='sudo ls -ltr'
 alias lst='lsd -ltr'
+
 #Dotfiles automation
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -22,13 +25,13 @@ alias gits='git status'
 # Sudo vim to preserve environment
 alias svim='sudo -E vim'
 
-bindkey '^R' history-beginning-search-backward
 # Plugins for syntax colouring and autocomplete.
 plugins=(
-    fzf # History fuzzy finder
-    zsh-autosuggestions # Autocomplete
-    git # Git history
     colored-man-pages # Nice man pages
+    fzf # History fuzzy finder
+    git # Git history
+    sudo # Double tap escape to redo previous cmd with sudo
+    zsh-autosuggestions # Autocomplete
     zsh-lsd # Better coloured LSD
     zsh-syntax-highlighting # Syntax highlighting
     zsh-vi-mode # CLI vim mode
@@ -45,3 +48,4 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export PATH=$PATH:/home/philip/.config/diff-so-fancy/
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=$PATH:/home/philip/rmirro

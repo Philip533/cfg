@@ -14,12 +14,14 @@
   [[default]]
     background_color = "#171423"
     cursor_color = "#9f9fa1"
-    font = Noto Sans Mono 10
+    font = NotoSansM Nerd Font Mono Bold 10
     foreground_color = "#9f9fa1"
     show_titlebar = False
     scrollbar_position = hidden
+    disable_mousewheel_zoom = True
     palette = "#2d283f:#ed2261:#1fa91b:#8ddc20:#487df4:#8d35c9:#3bdeed:#9e9ea0:#59516a:#f0729a:#53aa5e:#b2dc87:#a9bcec:#ad81c2:#9de3eb:#a288f7"
     use_system_font = False
+    copy_on_selection = True
   [[Aco]]
     background_color = "#1f1305"
     cursor_color = "#b4e1fd"

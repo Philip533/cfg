@@ -35,7 +35,7 @@ floating_modifier $mod
 #Launch most used programs.
 exec terminator
 exec spotify
-exec firefox
+exec brave-browser
 exec slack
 exec gtk-launch zotero.desktop
 
@@ -57,7 +57,7 @@ exec_always --no-startup-id ~/.config/polybar/forest/launch_polybar.sh
 assign [class="Terminator"] 1
 assign [class="Slack"] 5
 assign [class="thunderbird"]6
-assign [class="firefox"] 2
+assign [class="Brave-browser"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="discord"] 4
 for_window [class="gnuplot_qt" instance="gnuplot_qt"] floating enable
@@ -86,7 +86,7 @@ bindsym $mod+Return exec th
 bindsym $mod+End exec ksnip 
 
 #Start firefox 
-bindsym $mod+ctrl+Return exec firefox 
+bindsym $mod+ctrl+Return exec brave-browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -179,10 +179,15 @@ bindsym $mod+ctrl+5 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod2+Shift+q move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod2+Shift+w move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod2+Shift+e move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod2+Shift+r move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod2+Shift+t move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
