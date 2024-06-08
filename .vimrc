@@ -15,6 +15,12 @@ augroup filetype_fortran
      autocmd FileType fortran nnoremap <buffer> <F9> :w<CR>:execute '!gfortran' shellescape(@%,1)<CR> :execute '!./a.out'<CR>
 augroup END
 
+augroup filetype_gnuplot
+     autocmd!
+     autocmd FileType gnuplot nnoremap <buffer> <F9> :w<CR>:execute '!gnuplot' shellescape(@%,1)<CR>
+     autocmd FileType gnuplot setlocal commentstring=#\ %s
+augroup END
+
 augroup filetype_python
      autocmd!
      autocmd FileType python nnoremap <buffer> <F9> :w<CR>:execute '!python3' shellescape(@%, 1)<CR>
@@ -35,6 +41,7 @@ augroup filetype_bash
      autocmd FileType sh nnoremap <buffer> <localleader>c I#<esc>
 augroup END
 "}}}
+
 "Basic settings (tabsize, clipboard,etc) {{{
 set number
 set nofixeol
@@ -51,6 +58,8 @@ set encoding=utf-8
 set wildmenu
 set ttyfast
 set updatetime=1000
+set ignorecase
+set smartcase
 "}}}
 
 "Mappings {{{
@@ -99,6 +108,7 @@ nnoremap <leader>sz :!source ~/.zshrc<CR>
 "Change buffers
 nnoremap <leader>bd :bd<CR>
 nnoremap <localleader>b :ls<CR>:b<Space>
+nnoremap <leader>th :!th<CR><CR>
 
 "Live preview for LaTex
 noremap <leader>lp :LLPStartPreview<CR>
@@ -128,31 +138,33 @@ nnoremap <C-f> :NERDTreeFind<CR>
 "Plugins installed using plugged {{{
 filetype plugin indent on
 call plug#begin('~/.vim/plugged')
-Plug 'luochen1990/rainbow'
-Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
-Plug 'lervag/vimtex'
+Plug 'dracula/vim'
+Plug 'honza/vim-snippets'
 Plug 'jeyemhex/vim-castep'
-Plug 'tpope/vim-surround'
+Plug 'lervag/vimtex'
+Plug 'luochen1990/rainbow'
 Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'sirver/UltiSnips'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
+Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-commentary'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 "}}}
 
 "UltiSnip stuff {{{
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsExpandTrigger = '<S-t>'
+let g:UltiSnipsJumpForwardTrigger = '<S-f>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 "}}}
@@ -216,7 +228,7 @@ set fillchars=fold:\
 "}}}
 
 "Airline themes {{{
-let g:airline_theme='luna'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 
 "Airline buffer stuff at top
@@ -235,7 +247,7 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 let g:ycm_show_diagnostics_ui = 0
 nnoremap <leader>[ :YcmCompleter GoToDefinition<CR>
-let g:ycm_filetype_blacklist = { 'tex': 1 }
+" let g:ycm_filetype_blacklist = { 'tex': 1 }
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -243,26 +255,34 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "IndentLine{{{
 let g:indentLine_char = '⸽'
-let g:indentLine_setColors = 0
+let g:indentLine_setColors = 1
 
 "}}}
 
 "Aesthetics {{{
 set termguicolors
-set t_co=256
 let g:rainbow_active = 1
 
-"Changed to solarised8
+" Gruvbox stuff
+let g:gruvbox_underline=1
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=1
+let g:gruvbox_vert_split="bg2"
 syntax enable
-colorscheme solarized
+colorscheme gruvbox
+
 "Highlights folds in black and white so it's actually readable
-hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#32371f
-hi Search cterm=NONE guifg=Black guibg=white
+" hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#32371f
+hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#665c54
+hi Search cterm=NONE guifg=White guibg=#665c54
+hi CurSearch cterm=NONE guifg=White guibg=#665c54
+hi Question cterm=NONE guifg=White guibg=#665c54
+hi IncSearch cterm=NONE guifg=#ffffff guibg=Black
 
 "Gitgutter colours
-highlight GitGutterAdd    guifg=#009900 guibg=#171423
-highlight GitGutterChange guifg=#bbbb00 guibg=#171423
-highlight GitGutterDelete guifg=#ff2222 guibg=#171423
+highlight GitGutterAdd    guifg=#009900 guibg=#282828
+highlight GitGutterChange guifg=#bbbb00 guibg=#282828
+highlight GitGutterDelete guifg=#ff2222 guibg=#282828
 
 "Changes cursor type for insert mode
 let &t_SI = "\<Esc>[6 q"
@@ -274,14 +294,18 @@ highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=
 highlight CursorLineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=White guibg=NONE
 highlight SignColumn term=bold cterm=NONE ctermfg=White ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
+hi clear SpellBad
+hi SpellBad cterm=underline
+set spell
 highlight YcmWarningLine guibg=#ffffff ctermbg=white guifg=#ffffff
 highlight YcmWarningSign guibg=#ffffff ctermbg=white guifg=#ffffff
 highlight YcmWarningSection guibg=#ffffff ctermbg=white guifg=#ffffff
-highlight Pmenu ctermfg=15 ctermbg=0 guifg=#171423 guibg=#ffffff
-highlight Pmenusel ctermfg=15 ctermbg=0 guifg=#800000 guibg=#ffffff
-
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#282828
+highlight Pmenusel ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#665c54
 "Toggles highlighting for search
 nnoremap <silent> _ :nohl<CR>
 "}}}
+
+"Ctags {{{
 let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
-hi clear Conceal
+"}}}
