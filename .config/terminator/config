@@ -1,7 +1,6 @@
 [global_config]
   focus = mouse
   inactive_color_offset = 1.0
-  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
   suppress_multiple_term_dialog = True
 [keybindings]
   go_up = <Super>Up
@@ -12,16 +11,16 @@
   broadcast_all = <Primary><Super>b
 [profiles]
   [[default]]
-    background_color = "#171423"
-    cursor_color = "#9f9fa1"
+    background_color = "#282828"
+    cursor_color = "#e6d4a3"
     font = NotoSansM Nerd Font Mono Bold 10
-    foreground_color = "#9f9fa1"
+    foreground_color = "#e6d4a3"
     show_titlebar = False
     scrollbar_position = hidden
     disable_mousewheel_zoom = True
-    palette = "#2d283f:#ed2261:#1fa91b:#8ddc20:#487df4:#8d35c9:#3bdeed:#9e9ea0:#59516a:#f0729a:#53aa5e:#b2dc87:#a9bcec:#ad81c2:#9de3eb:#a288f7"
+    palette = "#1e1e1e:#be0f17:#868715:#cc881a:#377375:#a04b73:#578e57:#978771:#7f7061:#f73028:#aab01e:#f7b125:#719586:#c77089:#7db669:#e6d4a3"
     use_system_font = False
-    copy_on_selection = True
+    background_image = None
   [[Aco]]
     background_color = "#1f1305"
     cursor_color = "#b4e1fd"
@@ -41,12 +40,46 @@
     use_system_font = False
   [[Blazer]]
     background_color = "#0d1926"
+    cursor_color = "#d9e6f2"
     font = Noto Sans Mono 10
     foreground_color = "#d9e6f2"
     show_titlebar = False
     scrollbar_position = hidden
     palette = "#000000:#b87a7a:#7ab87a:#b8b87a:#7a7ab8:#b87ab8:#7ab8b8:#d9d9d9:#262626:#dbbdbd:#bddbbd:#dbdbbd:#bdbddb:#dbbddb:#bddbdb:#ffffff"
     use_system_font = False
+  [[Cyberdyne]]
+    background_color = "#151144"
+    cursor_color = "#00ff9c"
+    foreground_color = "#00ff92"
+    palette = "#080808:#ff8373:#00c172:#d2a700:#0071cf:#ff90fe:#6bffdd:#f1f1f1:#2e2e2e:#ffc4be:#d6fcba:#fffed5:#c2e3ff:#ffb2fe:#e6e7fe:#ffffff"
+    background_image = None
+  [[Gruvbox]]
+    background_color = "#1e1e1e"
+    cursor_color = "#e6d4a3"
+    font = NotoSansM Nerd Font Mono Bold 10
+    foreground_color = "#e6d4a3"
+    palette = "#1e1e1e:#be0f17:#868715:#cc881a:#377375:#a04b73:#578e57:#978771:#7f7061:#f73028:#aab01e:#f7b125:#719586:#c77089:#7db669:#e6d4a3"
+    use_system_font = False
+    background_image = None
+  [[Dracula]]
+    background_color = "#1e1f29"
+    cursor_color = "#bbbbbb"
+    font = NotoSansM Nerd Font Mono Bold 10
+    foreground_color = "#f8f8f2"
+    palette = "#000000:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#bbbbbb:#555555:#ff5555:#50fa7b:#f1fa8c:#bd93f9:#ff79c6:#8be9fd:#ffffff"
+    use_system_font = False
+    background_image = None
+  [[oldpurple]]
+    background_color = "#171423"
+    cursor_color = "#9f9fa1"
+    font = NotoSansM Nerd Font Mono Bold 10
+    foreground_color = "#9f9fa1"
+    show_titlebar = False
+    scrollbar_position = hidden
+    disable_mousewheel_zoom = True
+    palette = "#2d283f:#ed2261:#1fa91b:#8ddc20:#487df4:#8d35c9:#3bdeed:#9e9ea0:#59516a:#f0729a:#53aa5e:#b2dc87:#a9bcec:#ad81c2:#9de3eb:#a288f7"
+    use_system_font = False
+    copy_on_selection = True
 [layouts]
   [[default]]
     [[[child0]]]
