@@ -40,7 +40,7 @@ exec slack
 exec gtk-launch zotero.desktop
 
 #set $lock i3lock -i /usr/share/ubuntu/elden-ring-10.png
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i /usr/share/ubuntu/background.png
+exec --no-startup-id xss-lock --transfer-sleep-lock -- lock-multi
 #exec --no-startup-id xss-lock -- i3lock -c 00000
 #-- i3lock -n -i /usr/share/endeavouros/backgrounds/stormfather.jpg
 
@@ -56,11 +56,12 @@ exec_always --no-startup-id ~/.config/polybar/forest/launch_polybar.sh
 #Assign applications to workspaces
 assign [class="Terminator"] 1
 assign [class="Slack"] 5
-assign [class="thunderbird"]6
+assign [class="okular"]6
 assign [class="Brave-browser"] 2
 for_window [class="Spotify"] move to workspace 3
 assign [class="discord"] 4
 for_window [class="gnuplot_qt" instance="gnuplot_qt"] floating enable
+for_window [class="Evince" instance="evince"] floating enable
 for_window [class="firefox" instance="Toolkit"] sticky enable
 for_window [class="org-openscience-jmol-app-jmolpanel-JmolPanel"] floating enable
 for_window [class="Thunar"] floating enable
@@ -69,7 +70,7 @@ assign [Class="Zotero" instance="Navigator"] 4
 
 #Move between monitors
 bindsym $mod+Ctrl+greater move workspace to output right
-bindsym $mod+Ctrl+less move workspace to output left
+bindsym $mod+Ctrl+comma move workspace to output left
 
 #Focused indicator as teal
 client.focused          #ffffff #285577 #ffffff #2e9ef4   #008080
@@ -171,9 +172,9 @@ bindsym $mod2+o workspace number $ws9
 
 # Alternate bindings to make it easier to press
 # for higher workspaces
-bindsym $mod+ctrl+1 workspace number $ws6
-bindsym $mod+ctrl+2 workspace number $ws7
-bindsym $mod+ctrl+3 workspace number $ws8
+bindsym $mod2+ctrl+q workspace number $ws6
+bindsym $mod2+ctrl+w workspace number $ws7
+bindsym $mod2+ctrl+e workspace number $ws8
 bindsym $mod+ctrl+4 workspace number $ws9
 bindsym $mod+ctrl+5 workspace number $ws10
 
@@ -189,6 +190,7 @@ bindsym $mod2+Shift+r move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod2+Shift+t move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod2+Shift+y move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
@@ -234,6 +236,6 @@ bindsym $mod+r mode "resize"
 bindsym $mod+n exec --no-startup-id ~/.config/i3/scripts/new-workspace.sh
 # bindsym $mod+Shift+n exec --no-startup-id ~/autoworkspace.sh -m  # move container to new window
 
-exec sleep 0.1;screenfix
+exec sleep 0.1;sf
 exec_always sleep 0.1;feh --randomize --bg-scale --geometry 1920x1080 /usr/share/ubuntu/erbg; sleep 0.1; restart
 exec picom --config ~/.config/picom/picom.conf
