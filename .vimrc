@@ -1,56 +1,9 @@
-"Autocmd groups for filetypes and loading {{{
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-    autocmd FileType vim nnoremap <buffer> <localleader>c I"<esc>
-    autocmd FileType vim nnoremap <buffer> <localleader>f Vatzf
-augroup END
-
-augroup load_file
-     autocmd BufRead * :let @/ = ""
-augroup END
-
-augroup filetype_fortran
-     autocmd!
-     autocmd FileType fortran nnoremap <buffer> <F9> :w<CR>:execute '!gfortran' shellescape(@%,1)<CR> :execute '!./a.out'<CR>
-augroup END
-
-augroup filetype_gnuplot
-     autocmd!
-     autocmd FileType gnuplot nnoremap <buffer> <F9> :w<CR>:execute '!gnuplot' shellescape(@%,1)<CR>
-     autocmd FileType gnuplot setlocal commentstring=#\ %s
-augroup END
-
-augroup filetype_python
-     autocmd!
-     autocmd FileType python nnoremap <buffer> <F9> :w<CR>:execute '!python3' shellescape(@%, 1)<CR>
-augroup END
-
-augroup filetype_cpp
-     autocmd!
-     autocmd FileType c nnoremap <buffer> <F9> :w<CR>:execute '!g++' shellescape(@%, 1)<CR> : execute '!./a.out. <CR>
-augroup END
-
-augroup filetype_tex
-     autocmd!
-     autocmd FileType tex nnoremap <buffer> <localleader>c I%<esc>
-augroup END
-
-augroup filetype_bash
-     autocmd!
-     autocmd FileType sh nnoremap <buffer> <localleader>c I#<esc>
-augroup END
-"}}}
-
 "Basic settings (tabsize, clipboard,etc) {{{
 set number
 set nofixeol
 set hidden
 set hlsearch incsearch
 set relativenumber
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
 set expandtab
 set background=dark
 set clipboard=unnamedplus
@@ -63,27 +16,17 @@ set smartcase
 "}}}
 
 "Mappings {{{
-"Change splits faster
 let mapleader=" "
 set backspace=indent,eol,start
-"Delete lines
-noremap - dd
 
+" Switch split
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 
-"Enter new line in insert mode
-inoremap <C-o> <Esc>o
-inoremap <C-O> <Esc>O
-
 "Go to end of line in insert mode
 inoremap <C-A> <Esc>A
-
-"Quickfix window stuff
-nnoremap <silent><leader>cn :cn<CR>
-nnoremap <silent><leader>cp :cp<CR>
 
 "Rebind escape to jk
 inoremap jk <esc>
@@ -91,13 +34,6 @@ inoremap jk <esc>
 "Move to start or end of line in normal mode
 nnoremap L $
 nnoremap H 0
-
-"Delete a line in insert mode
-inoremap <C-d> <esc> ddi
-
-"Uppercase  word in insert mode
-inoremap <C-u> <esc> viw U  
-inoremap <C-e> <esc> viw ui
 
 "Edit vimrc, zshrc
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
@@ -108,21 +44,14 @@ nnoremap <leader>sz :!source ~/.zshrc<CR>
 "Change buffers
 nnoremap <leader>bd :bd<CR>
 nnoremap <localleader>b :ls<CR>:b<Space>
-nnoremap <leader>th :!th<CR><CR>
 
-"Live preview for LaTex
-noremap <leader>lp :LLPStartPreview<CR>
+" Open a new terminator instance in pwd using custom th script
+nnoremap <leader>th :!th<CR><CR>
 
 "Close brackets for different types
 inoremap ( ()<esc>i
 inoremap { {}<esc>i
 inoremap [ []<esc>i
-
-"Gfortran compilation
-nnoremap <leader>gf :!gfortran -Wall -fcheck=all -fmax-errors=1 -O3 -march=native -std=f2008<CR>
-
-"Put word in speech marks
-inoremap <C-s> <esc>bi"<esc>ea"
 
 " Changes how to save and quit
 nnoremap <Leader>w :w<ESC>
@@ -136,35 +65,45 @@ nnoremap <C-f> :NERDTreeFind<CR>
 "}}}
 
 "Plugins installed using plugged {{{
-filetype plugin indent on
 call plug#begin('~/.vim/plugged')
+" Show diffs in signcolumn and jump between changes
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
-Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
-Plug 'dracula/vim'
+" Snippets for various things
 Plug 'honza/vim-snippets'
+" Highlight CASTEP input files
 Plug 'jeyemhex/vim-castep'
+" Latex
 Plug 'lervag/vimtex'
+" Rainbow brackets
 Plug 'luochen1990/rainbow'
+" Show function name on tagbar
 Plug 'majutsushi/tagbar'
+" Colour scheme
 Plug 'morhetz/gruvbox'
+" File navigation
 Plug 'preservim/nerdtree'
+" More snippets
 Plug 'sirver/UltiSnips'
+" Fold functions in python
 Plug 'tmhedberg/SimpylFold'
+" Quick commenting
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+" Put things in brackets etc
 Plug 'tpope/vim-surround'
+" Autocompletion with LSP
 Plug 'Valloric/YouCompleteMe'
+" Line at bottom of screen
 Plug 'vim-airline/vim-airline'
+" Theme for airline
 Plug 'vim-airline/vim-airline-themes'
+" Little dots showing indent level
 Plug 'Yggdroot/indentLine'
 call plug#end()
 "}}}
 
 "UltiSnip stuff {{{
-let g:UltiSnipsExpandTrigger = '<S-t>'
-let g:UltiSnipsJumpForwardTrigger = '<S-f>'
+let g:UltiSnipsExpandTrigger = '<C-t>'
+let g:UltiSnipsJumpForwardTrigger = '<C-f>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 "}}}
@@ -202,20 +141,21 @@ endfunction
 
 "Vimtex settings {{{
 set conceallevel=1
-  let g:vimtex_syntax_conceal = {
-    \ 'accents': 1,
-    \ 'ligatures': 1,
-    \ 'cites': 1,
-    \ 'fancy': 1,
-    \ 'greek': 1,
-    \ 'math_bounds': 1,
-    \ 'math_delimiters': 0,
-    \ 'math_fracs': 1,
-    \ 'math_super_sub': 1,
-    \ 'math_symbols': 0,
-    \ 'sections': 1,
-    \ 'styles': 1,
-    \}
+set concealcursor=c
+let g:vimtex_syntax_conceal = {
+  \ 'accents': 1,
+  \ 'ligatures': 1,
+  \ 'cites': 1,
+  \ 'fancy': 1,
+  \ 'greek': 1,
+  \ 'math_bounds': 1,
+  \ 'math_delimiters': 0,
+  \ 'math_fracs': 1,
+  \ 'math_super_sub': 1,
+  \ 'math_symbols': 0,
+  \ 'sections': 1,
+  \ 'styles': 1,
+  \}
 "Sets vimtex default reader
 let g:vimtex_view_general_viewer = 'okular'
 let maplocalleader = "\\"
@@ -231,7 +171,7 @@ set fillchars=fold:\
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 
-"Airline buffer stuff at top
+"Airline buffer stuff 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -246,17 +186,31 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
 let g:ycm_show_diagnostics_ui = 0
-nnoremap <leader>[ :YcmCompleter GoToDefinition<CR>
-" let g:ycm_filetype_blacklist = { 'tex': 1 }
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_semantic_triggers = {
+\  'tex'  : ['\ref{','\cite{'],
+\ }
+
+nnoremap <leader>[ :YcmCompleter GoTo<CR>
+let g:ycm_key_list_select_completion = ['<Tab>', '<Down>']
+let g:mma_candy = 1
+let g:ycm_global_ycm_extra_conf = '~/PhD/mudirac/.ycm_extra_conf.py'
+
+" YouCompleteMe configuration options
+let g:ycm_language_server =
+    \[
+    \   {
+    \       'name': 'fortls',
+    \       'cmdline': ['fortls', '--hover_language', 'fortran', '--notify_init', '--hover_signature', '--use_signature_help', '--include_dirs'],
+    \       'filetypes': ['fortran'],
+    \       'project_root_files': ['.fortls'],
+    \   },
+    \]
 "}}}
 
 "IndentLine{{{
 let g:indentLine_char = '⸽'
 let g:indentLine_setColors = 1
-
+let g:indentLine_setConceal = 0
 "}}}
 
 "Aesthetics {{{
@@ -268,12 +222,10 @@ let g:gruvbox_underline=1
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_vert_split="bg2"
-syntax enable
 colorscheme gruvbox
 
 "Highlights folds in black and white so it's actually readable
-" hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#32371f
-hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White guibg=#665c54
+hi Folded cterm=NONE ctermfg=Black ctermbg=white guifg=White
 hi Search cterm=NONE guifg=White guibg=#665c54
 hi CurSearch cterm=NONE guifg=White guibg=#665c54
 hi Question cterm=NONE guifg=White guibg=#665c54
@@ -290,18 +242,21 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 let &t_TI = ""
 let &t_TE = ""
+
+" Change colours of various things
 highlight LineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=White guibg=NONE
 highlight CursorLineNr term=bold cterm=NONE ctermfg=Black ctermbg=NONE gui=NONE guifg=White guibg=NONE
 highlight SignColumn term=bold cterm=NONE ctermfg=White ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-hi clear SpellBad
-hi SpellBad cterm=underline
-set spell
 highlight YcmWarningLine guibg=#ffffff ctermbg=white guifg=#ffffff
 highlight YcmWarningSign guibg=#ffffff ctermbg=white guifg=#ffffff
 highlight YcmWarningSection guibg=#ffffff ctermbg=white guifg=#ffffff
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#282828
 highlight Pmenusel ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#665c54
+
+" Vimdiff settings{{{
+set diffopt+=inline:word
+"}}}
+
 "Toggles highlighting for search
 nnoremap <silent> _ :nohl<CR>
 "}}}
@@ -309,3 +264,5 @@ nnoremap <silent> _ :nohl<CR>
 "Ctags {{{
 let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
 "}}}
+
+filetype plugin indent on
