@@ -1,4 +1,4 @@
-# Set terminal to QT and make it a reasonable size
+# Set terminal to pdfcairo and make it a reasonable size
 set term pdfcairo enhanced  font "Helvetica, 20"
 
 # Encoding for symbols 
@@ -12,7 +12,7 @@ set linetype 6 pt 4 lw 4 lc rgb '#c9d8ef' ps 1.5 #
 set linetype 5 pt 5 lw 4 lc rgb '#edd1c2' ps 1.5 #
 set linetype 4 pt 6 lw 4 lc rgb '#f7a789' ps 1.5 #
 set linetype 7 pt 7 lw 4 lc rgb '#e36a53' ps 1.5 #
-set linetype 2 pt 8 lw 4 lc rgb '#b40426' ps 1.5
+set linetype 2 pt 8 lw 4 lc rgb '#b40426' ps 1.5 
 set linetype cycle 8
 
 # Shared scripts

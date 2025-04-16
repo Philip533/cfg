@@ -80,9 +80,9 @@ case $chosen in
         fi
         ;;
     $lock)
-		if [[ -f /usr/bin/i3lock ]]; then
+		if [[ -f /usr/local/bin/lock-multi ]]; then
 			# ~/.config/i3/scripts/blur-lock
-      i3lock -i /usr/share/ubuntu/background.png
+      lock-multi
 		elif [[ -f /usr/bin/betterlockscreen ]]; then
 			betterlockscreen -l
 		fi

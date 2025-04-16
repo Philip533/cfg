@@ -10,8 +10,10 @@ alias aptup='sudo apt update; sudo apt upgrade'
 alias aptins='sudo apt install' 
 
 # ls aliases
-alias sls='sudo ls -ltr'
+alias sls='sudo ls -ltr --color=auto'
 alias lst='lsd -ltr'
+alias python3='python3.11'
+alias cat='bat'
 
 #Dotfiles automation
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -24,6 +26,12 @@ alias gits='git status'
 
 # Sudo vim to preserve environment
 alias svim='sudo -E vim'
+
+# Alias for copying PWD to clipboard
+alias pwdcp='pwd | xclip -selection clipboard'
+
+# bravebrowser
+alias bb='brave-browser'
 
 # Plugins for syntax colouring and autocomplete.
 plugins=(
@@ -49,3 +57,11 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/home/philip/.config/diff-so-fancy/
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=$PATH:/home/philip/rmirro
+# export PATH=$PATH:/home/philip/mudirac/build/bin
+export PATH=$PATH:/home/philip/PhD/mudirac/build/bin
+
+export PATH=$PATH:/home/philip/castep/obj/linux_x86_64_gfortran10--mpi
+alias castepclean='~/castep/obj/linux_x86_64_gfortran10--clean/castep.mpi'
+alias otfgclean='~/castep/obj/linux_x86_64_gfortran10--clean/otfg'
+
+unsetopt share_history
