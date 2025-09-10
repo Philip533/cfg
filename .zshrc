@@ -15,6 +15,18 @@ alias lst='lsd -ltr'
 alias python3='python3.11'
 alias cat='bat'
 
+# Copies both .pdf and .gle files of the same
+# name. I am incredibly lazy.
+function glecp(){
+  file=$1
+  location=$2
+  substring=${file:0:-4}
+  extensions="{.pdf,.gle}"
+  substring+=$extensions
+  files=$substring
+  eval cp $files $location
+}
+
 #Dotfiles automation
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -59,9 +71,11 @@ export PATH=$PATH:/home/philip/.config/diff-so-fancy/
 export PATH=$PATH:/home/philip/rmirro
 # export PATH=$PATH:/home/philip/mudirac/build/bin
 export PATH=$PATH:/home/philip/PhD/mudirac/build/bin
+export PATH=$PATH:/home/philip/PhD/mudiracclean/mudirac/build/bin
 
 export PATH=$PATH:/home/philip/castep/obj/linux_x86_64_gfortran10--mpi
+export PATH=$PATH:/home/philip/castep/obj/linux_x86_64_gfortran10--clean
 alias castepclean='~/castep/obj/linux_x86_64_gfortran10--clean/castep.mpi'
-alias otfgclean='~/castep/obj/linux_x86_64_gfortran10--clean/otfg'
+# alias otfgclean='~/castep/obj/linux_x86_64_gfortran10--clean/otfg'
 
 unsetopt share_history
