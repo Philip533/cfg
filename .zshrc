@@ -19,7 +19,7 @@ alias cat='bat'
 # name. I am incredibly lazy.
 function glecp(){
   file=$1
-  location=$2
+  location="~/PhD/Figures"
   substring=${file:0:-4}
   extensions="{.pdf,.gle}"
   substring+=$extensions
