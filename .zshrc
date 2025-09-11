@@ -15,16 +15,55 @@ alias lst='lsd -ltr'
 alias python3='python3.11'
 alias cat='bat'
 
-# Copies both .pdf and .gle files of the same
-# name. I am incredibly lazy.
-function glecp(){
+# This copies a PDF and GLE file to the appropriate
+# directories.
+# It also searches the file for data statements
+# and copies the appropriate files into a directory
+# named the same as the PDF
+function figcp(){
+  
+  # We take one argument, either file.pdf or 
+  # file.gle. Included the extension as autocomplete
+  # will do this. Either one is fine as it will be stripped
+  # and replaced anyway
+  
+  # Filename 
   file=$1
-  location="~/PhD/Figures"
-  substring=${file:0:-4}
-  extensions="{.pdf,.gle}"
-  substring+=$extensions
-  files=$substring
-  eval cp $files $location
+
+  # Remove the extension, since it could be either,
+  # and then build the two files again
+  file_stem=${file:0:-4}
+  gle_file="$file_stem.gle"
+  pdf_file="$file_stem.pdf"
+
+
+  # Define the directory that is named the same as the
+  # file where everything will go
+  dir=~/PhD/Figures/$file_stem
+
+  # We check if the directory exists or not. If it 
+  # doesn't, then make it
+  if [ ! -d $dir ]; then
+    mkdir $dir
+  fi
+
+  # Copy the PDF and GLE file
+  cp -t $dir $gle_file $pdf_file
+
+  # We want to make a README that contains the date of copy
+  # and a bit of information
+  echo `date` >> "$dir/README.md"
+  echo $2 >> "$dir/README.md"
+  echo " " >> "$dir/README.md"
+
+  # Now we search the GLE file for any data statements,
+  # and copy these files into the appropriate directory
+  grep data $gle_file | while read -r line; do
+    string2=$(echo $line | awk '{print $2}')
+    string3=$(echo $string2 | awk '{print substr($0,2,length($0)-2)}')
+    cp $string3 $dir
+  done
+
 }
 
 #Dotfiles automation
