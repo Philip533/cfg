@@ -58,6 +58,7 @@ assign [class="Terminator"] 1
 assign [class="Slack"] 5
 assign [class="okular"]6
 assign [class="Brave-browser"] 2
+assign [class="tidal-hifi"] 3
 for_window [class="Spotify"] move to workspace 3
 assign [class="discord"] 4
 for_window [class="gnuplot_qt" instance="gnuplot_qt"] floating enable
